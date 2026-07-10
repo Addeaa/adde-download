@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adde出差助手 - 下载</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            border-radius: 24px;
+            padding: 40px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        .icon {
+            width: 100px;
+            height: 100px;
+            border-radius: 20px;
+            margin: 0 auto 24px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+        }
+        h1 { font-size: 24px; color: #1a1a1a; margin-bottom: 8px; }
+        .version { color: #666; font-size: 14px; margin-bottom: 24px; }
+        .features { text-align: left; margin-bottom: 24px; }
+        .features li {
+            list-style: none;
+            padding: 8px 0;
+            color: #444;
+            font-size: 14px;
+        }
+        .features li::before { content: "✓ "; color: #22c55e; font-weight: bold; }
+        .download-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 16px 48px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .download-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4); }
+        .download-btn:active { transform: translateY(0); }
+        .size { color: #999; font-size: 12px; margin-top: 16px; }
+        .tip {
+            background: #f0f9ff;
+            border: 1px solid #bae6fd;
+            border-radius: 8px;
+            padding: 12px;
+            margin-top: 20px;
+            font-size: 12px;
+            color: #0369a1;
+        }
+        .loading { color: #999; font-size: 14px; }
+        .error { color: #ef4444; font-size: 14px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="icon">✈️</div>
+        <h1>Adde出差助手</h1>
+        <p class="version" id="versionInfo">加载中...</p>
+
+        <ul class="features">
+            <li>出差费用记录与管理</li>
+            <li>自动计算可报销金额</li>
+            <li>统计分析与报表</li>
+            <li>数据备份与恢复</li>
+            <li>浅色/深色主题</li>
+        </ul>
+
+        <a href="#" class="download-btn" id="downloadBtn">下载安装包</a>
+        <p class="size">约 33MB</p>
+
+        <div class="tip">
+            💡 下载后请在设置中允许"安装未知来源应用"
+        </div>
+    </div>
+
+    <script>
+        const repoOwner = 'Addeaa';
+        const repoName = 'adde-app-update';
+        const apiBase = `https://gitee.com/api/v5/repos/${repoOwner}/${repoName}/releases/latest`;
+
+        async function loadLatestVersion() {
+            try {
+                const response = await fetch(apiBase);
+                if (!response.ok) throw new Error('API请求失败');
+                const data = await response.json();
+
+                const tagName = data.tag_name || '';
+                const version = tagName.replace('v', '');
+                const body = data.body || '';
+
+                // 查找APK下载链接
+                let apkUrl = '';
+                const assets = data.assets || [];
+                for (const asset of assets) {
+                    if (asset.name && asset.name.endsWith('.apk')) {
+                        apkUrl = asset.browser_download_url;
+                        break;
+                    }
+                }
+
+                if (version && apkUrl) {
+                    document.getElementById('versionInfo').textContent = `v${version} | Android`;
+                    document.getElementById('downloadBtn').href = apkUrl;
+                    document.getElementById('downloadBtn').textContent = '下载最新版本';
+
+                    // Android设备自动下载
+                    const userAgent = navigator.userAgent || '';
+                    if (/android/i.test(userAgent)) {
+                        setTimeout(() => {
+                            window.location.href = apkUrl;
+                        }, 1500);
+                    }
+                } else {
+                    document.getElementById('versionInfo').textContent = '暂无可用版本';
+                    document.getElementById('downloadBtn').style.opacity = '0.5';
+                    document.getElementById('downloadBtn').style.pointerEvents = 'none';
+                }
+            } catch (error) {
+                console.error('获取版本信息失败:', error);
+                document.getElementById('versionInfo').textContent = '获取版本信息失败，请刷新重试';
+                document.getElementById('downloadBtn').style.opacity = '0.5';
+                document.getElementById('downloadBtn').style.pointerEvents = 'none';
+            }
+        }
+
+        // 页面加载时获取最新版本
+        loadLatestVersion();
+    </script>
+</body>
+</html>
