@@ -74,6 +74,9 @@
     </style>
 </head>
 <body>
+    <div style="display:flex;flex-direction:column;gap:24px;align-items:center;max-width:840px;width:100%">
+
+    <!-- 手机端 -->
     <div class="container">
         <div class="icon"><img src="data:image/jpeg;base64,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" alt="Adde出差助手"></div>
         <h1>Adde出差助手</h1>
@@ -87,15 +90,40 @@
             <li>附件预览（图片+PDF）</li>
             <li>数据导入合并功能</li>
             <li>浅色/深色主题</li>
-            <li>修复点击消费记录无法编辑的问题</li>
         </ul>
 
-        <a href="#" class="download-btn" id="downloadBtn">下载安装包</a>
-        <p class="size">约 50MB</p>
+        <a href="#" class="download-btn" id="downloadBtn">📱 下载手机版</a>
+        <p class="size">约 50MB | Android</p>
 
         <div class="tip">
             💡 下载后请在设置中允许"安装未知来源应用"
         </div>
+    </div>
+
+    <!-- 桌面端 -->
+    <div class="container" style="border: 2px solid #667eea;">
+        <div class="icon" style="background:#f0f0f0;display:flex;align-items:center;justify-content:center;font-size:40px;">🖥️</div>
+        <h1>Adde出差助手（桌面端）</h1>
+        <p class="version">v1.3.1 | Windows</p>
+
+        <ul class="features">
+            <li>读取手机端导出的ZIP文件</li>
+            <li>一键生成Excel出差审批表</li>
+            <li>生成Word/PDF附件文档</li>
+            <li>详细账单导出（含附件图片）</li>
+            <li>附件预览（图片+PDF）</li>
+            <li>多人员自动排序</li>
+            <li>打印自动适应页面</li>
+        </ul>
+
+        <a href="https://github.com/Addeaa/adde-reimbursement-desktop/releases/download/v1.3.1/Adde%E5%87%BA%E5%B7%AE%E5%8A%A9%E6%89%8B%EF%BC%88%E6%A1%8C%E9%9D%A2%E7%AB%AF%EF%BC%89.exe" class="download-btn" style="background:linear-gradient(135deg,#4361ee,#3a0ca3);">🖥️ 下载桌面版</a>
+        <p class="size">约 73MB | Windows</p>
+
+        <div class="tip">
+            💡 桌面端用于读取手机端导出的ZIP文件，生成报销文档
+        </div>
+    </div>
+
     </div>
 
     <script>
@@ -126,7 +154,7 @@
                 if (version && apkUrl) {
                     document.getElementById('versionInfo').textContent = `v${version} | Android`;
                     document.getElementById('downloadBtn').href = apkUrl;
-                    document.getElementById('downloadBtn').textContent = '下载最新版本';
+                    document.getElementById('downloadBtn').textContent = '📱 下载手机版';
 
                     // Android设备自动下载
                     const userAgent = navigator.userAgent || '';
