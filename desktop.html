@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adde出差助手（桌面端）- 下载</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #4361ee 0%, #3a0ca3 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            border-radius: 24px;
+            padding: 40px;
+            max-width: 420px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        .icon {
+            width: 100px;
+            height: 100px;
+            border-radius: 20px;
+            margin: 0 auto 24px;
+            background: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+        }
+        h1 { font-size: 24px; color: #1a1a1a; margin-bottom: 8px; }
+        .version { color: #666; font-size: 14px; margin-bottom: 24px; }
+        .features { text-align: left; margin-bottom: 24px; }
+        .features li {
+            list-style: none;
+            padding: 8px 0;
+            color: #444;
+            font-size: 14px;
+        }
+        .features li::before { content: "✓ "; color: #22c55e; font-weight: bold; }
+        .download-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #4361ee 0%, #3a0ca3 100%);
+            color: white;
+            padding: 16px 48px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .download-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(67, 97, 238, 0.4); }
+        .download-btn:active { transform: translateY(0); }
+        .size { color: #999; font-size: 12px; margin-top: 16px; }
+        .tip {
+            background: #f0f9ff;
+            border: 1px solid #bae6fd;
+            border-radius: 8px;
+            padding: 12px;
+            margin-top: 20px;
+            font-size: 12px;
+            color: #0369a1;
+            text-align: left;
+        }
+        .tip-title { font-weight: bold; margin-bottom: 8px; }
+        .divider {
+            height: 1px;
+            background: #e5e7eb;
+            margin: 20px 0;
+        }
+        .mobile-link {
+            display: inline-block;
+            color: #667eea;
+            text-decoration: none;
+            font-size: 14px;
+            margin-top: 12px;
+        }
+        .mobile-link:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="icon">🖥️</div>
+        <h1>Adde出差助手（桌面端）</h1>
+        <p class="version">v1.3.1 | Windows</p>
+
+        <ul class="features">
+            <li>读取手机端导出的ZIP文件</li>
+            <li>一键生成Excel出差审批表</li>
+            <li>生成Word/PDF附件文档</li>
+            <li>详细账单导出（含附件图片）</li>
+            <li>附件预览（图片+PDF）</li>
+            <li>多人员自动排序</li>
+            <li>打印自动适应页面</li>
+        </ul>
+
+        <a href="https://github.com/Addeaa/adde-reimbursement-desktop/releases/download/v1.3.1/Adde%E5%87%BA%E5%B7%AE%E5%8A%A9%E6%89%8B%EF%BC%88%E6%A1%8C%E9%9D%A2%E7%AB%AF%EF%BC%89.exe" class="download-btn">🖥️ 下载桌面版</a>
+        <p class="size">约 73MB | Windows</p>
+
+        <div class="divider"></div>
+
+        <div class="tip">
+            <div class="tip-title">💡 使用说明</div>
+            <p>1. 在手机端「设置」中导出 ZIP 文件</p>
+            <p>2. 将 ZIP 文件传到电脑</p>
+            <p>3. 打开桌面端，导入 ZIP 文件</p>
+            <p>4. 选择需要的导出格式生成文档</p>
+        </div>
+
+        <a href="https://addeaa.github.io/adde-download/" class="mobile-link">📱 前往下载手机版 →</a>
+    </div>
+</body>
+</html>
